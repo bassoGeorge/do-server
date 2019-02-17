@@ -12,13 +12,16 @@ Global docker setup
 2. Create dockernet: `docker network create -d bridge --gateway 192.168.0.1 --subnet 192.168.0.0/24 dockernet`
 
 Mysql setup
-1. create database: shivani_portfolio
+1. create database: shivani_portfolio `create database shivani_portfolio;`
 2. create user: shivani_directus
+  * `create user 'shivani_directus'@'%' identified by 'password';`
+  * `grant all privileges on shivani_portfolio.* to 'shivani_directus'@'%';`
 
 Shivani backend
 0. Setup config/api.env
 1. docker-compose up
 2. Inside container, load db dump to database
+3. Change owner of storage to www-data
 
 Shivani frontend
 1. webpack.prod.js -> change api url
